@@ -1,0 +1,167 @@
+COMMANDE POUR RECUPERER LA SOURIS
+ctrl + alt + delete
+
+CONNECTION EN TANT QUE ROOT
+su -
+
+connection au ssh depuis le terminal client
+```ssh *user_name*@*adresse_ip* -p *numero_de_port*```
+
+01. A QUOI SERT UNE VM ?
+
+Une vm permet de pouvoir avoir un "autre ordinateur" sur sa machine, don pouvoir avoir un autre OS,
+permet aussi de faire des test dans une zone clos de l'ordinateur
+et donc avoir moins de risque de causer des soucis au reste de l'ordinateur. 
+Une vm est simulé avec le même Hardware que l'ordinateur hôte.
+
+2. POUQUOI DEBIAN 
+
+Debian support multiple architecture comparé aux autres distributions.
+Debian est souvent maj pour fixer les bugs/faille de sécurité.
+Debian est plus "user-friendly" du a son interface.
+
+3. Aptitude VS APT
+
+Aptitude gère des packés plus haut nivaux que APT.
+APT ne va faire que ce qui est explicitement demandé dans la ligne de commande
+la ou aptitude peux interprété (supprime les anciens packé par exemple).
+
+4. AppArmor ?
+
+C'est un pare feu Linux, fournis de base avec la distribution Debian.
+
+------------------------------------
+
+lancer machine virtuel.
+
+mot de passe demandé, pas d'interface graphique.
+
+vérif UFW
+```sudo ufw status```
+
+verif SSH
+```sudo systemctl status ssh```
+
+------------------------------------
+
+afficher les utilisateurs dans les groupes
+```getent group sudo```
+```getent group user42```
+
+ajouter un utilisateur
+```sudo adduser *newuser* ```
+
+5. Aller voir les regles modifier des mdp 
+```vim /etc/pam.d/common-password```
+
+ajouter un group
+```sudo groupadd *groupname* ```
+
+ajouter *newuser* a *groupname*
+```sudo usermod -aG *groupname* *username* ```
+
+verif qu'il est bien dans le groupe
+```getent group *groupname* ```
+
+
+6. Politique du mdp
+
+Permet de mieux securisé l'accès aux session en ayant des mdp plus fort.
+Permet également de d'augment le temps necessaire a une attaque de type brut force.
+Désavantage, des mdp plus difficile a retenir pour l'utilisateur.
+
+------------------------------------
+
+Verif du hostname : acabarba42
+
+changer le hostname 
+```sudo hostnamectl set-hostname *newHostname* ```
+
+redemarrer la vm pour verif
+```sudo reboot```
+
+afficher la partition
+```lsblk```
+
+------------------------------------
+
+sudo actif sur la machine
+```dpkg -l | grep sudo - ```
+ou lui dire que les commandes sudo fonctionnent depuis le debut de l'evaluation.
+
+ajouter newuser au group sudo
+```sudo usermod -aG *groupname* *newuser* ```
+
+
+7. Quel est l'interêt et le fonctionnement de sudo par des exemples.
+
+Permet de donner ou non a l'utilisateur la possibilité de faire tel ou tel tache.
+Il y a des logs et donc la possibilité d'avoir un historique.
+Permet de pouvoir effectuer des commandes sans etre root et donc limité les action iremediable.
+
+8. Montrer les regles mise en place demandé dans le sujet 
+```sudo vim /var/log/sudo.log```
+```sudo vim /etc/sudoers```
+
+------------------------------------
+
+verif UFW installé et fonctionnel
+```sudo ufw status```
+
+9. UFW  ?
+
+Uncomplicated Firewall.
+Permet de modifier le firewall, d'ouvrir ou fermer des port, les modifier etc.
+
+ouvrir un nouveau port
+```sudo ufw allow *port-id*```
+
+verif
+```sudo ufw status numbered```
+
+suprimer le port
+```sudo ufw delete *rule number*```
+
+------------------------------------
+
+verif ssh tourne
+```sudo systemctl status ssh```
+```sudo service sshd status```
+
+10. SSH  ?
+
+Secure shell, permet de sécurisé une connection entre host et
+client via un système de cryptage.
+
+verif que le port ssh utilise uniquement le port 4242
+```sudo grep Port /etc/ssh/sshd_config```
+
+utiliser le SSH pour ce connecter a *newuser* sur le terminal hors vm 
+```ssh *your_username*@*ip_adresse* -p *le_port_ouvert*```
+
+------------------------------------
+
+voir le script
+```nano /usr/local/bin/monitoring.sh
+
+executer le script 
+```sudo /usr/local/bin/monitoring.sh```
+
+voir les regles pour le script
+```sudo crontab -u root -e```
+
+11. C'est quoi cron ?
+
+Cron est un programe qui permet de lancer des taches a un moment donné,
+lié avec une horloge.
+Crin est aussi l'équivalent du gestionnaire de tâches sous windows.
+
+12. Pourquoi le script ?
+
+Permet de faire ici un script toute les 10 min qui affiche les infos 
+sur la VM mais qui peut être tout autre.
+Il peut par exemple permette de redémarrer un serveur de façon hebdomadaire ...
+
+13. Arreter le script 
+aller voir les regles du script et retirer la derniere ligne qui provoque
+le script donc pas besoin de toucher le script.
