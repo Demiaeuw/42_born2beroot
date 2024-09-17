@@ -51,9 +51,9 @@ Pour ce projet, vous devrez installer une machine virtuelle (VM) sur votre machi
 
 Une fois le serveur configuré, vous pouvez tester les éléments suivants :
 
-    SSH : Connectez-vous à distance à votre serveur en utilisant l'IP de votre VM via le protocole SSH.
+SSH : Connectez-vous à distance à votre serveur en utilisant l'IP de votre VM via le protocole SSH.
 
-    Exemple :
+Exemple :
 
 ```bash
 
