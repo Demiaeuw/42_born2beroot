@@ -6,19 +6,19 @@ Born2beroot est un projet de l'école 42 qui consiste à installer et configurer
 Le projet met l'accent sur les bonnes pratiques de sécurité, la gestion des utilisateurs et des groupes, ainsi que l'automatisation de certaines tâches d'administration système.
 Fonctionnalités
 
-  Installation et configuration d'un serveur sur une machine virtuelle (VM).
+  - Installation et configuration d'un serveur sur une machine virtuelle (VM).
   
-  Mise en place de la partition automatique.
+  - Mise en place de la partition automatique.
   
-  Sécurisation du serveur avec un pare-feu (ufw sur Debian ou firewalld sur CentOS).
+  - Sécurisation du serveur avec un pare-feu (ufw sur Debian ou firewalld sur CentOS).
   
-  Configuration d'un accès SSH sécurisé.
+  - Configuration d'un accès SSH sécurisé.
   
-  Configuration d'un utilisateur ayant des droits sudo limités avec une politique stricte de sécurité.
+  - Configuration d'un utilisateur ayant des droits sudo limités avec une politique stricte de sécurité.
   
-  Mise en place de services de surveillance tels que UFW, fail2ban, et cron pour des tâches automatisées.
+  - Mise en place de services de surveillance tels que UFW, fail2ban, et cron pour des tâches automatisées.
   
-  Installation et utilisation de AppArmor (ou SELinux pour CentOS) pour renforcer la sécurité.
+  - Installation et utilisation de AppArmor (ou SELinux pour CentOS) pour renforcer la sécurité.
 
 ## Installation
 
